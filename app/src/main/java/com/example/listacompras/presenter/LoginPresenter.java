@@ -16,6 +16,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginPresenter {
+public class LoginPresenter implements LoginPresenterContract.presenter {
+    private LoginPresenterContract.view activity;
 
+    public LoginPresenter(LoginPresenterContract.view activity) {
+        this.activity = activity;
+    }
+
+    @Override
+    public void checkLogin(String login, String password) {
+        
+    }
 }
