@@ -8,7 +8,7 @@ public class LoginPresenterContract {
     public interface view {
         public void message(String msg);
         public Context getContext();
-        public void entrar();
+        public void entrar(Class mClass);
     }
 
     public interface presenter {

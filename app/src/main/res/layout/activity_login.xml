@@ -36,13 +36,10 @@
         android:layout_height="wrap_content"
         android:text="Login" />
 
-    <TextView
+    <Button
+        android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ou" />
-
-    <com.google.android.gms.common.SignInButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="Register" />
 
 </LinearLayout>

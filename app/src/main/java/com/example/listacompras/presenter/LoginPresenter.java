@@ -2,6 +2,8 @@ package com.example.listacompras.presenter;
 
 import androidx.annotation.NonNull;
 
+import com.example.listacompras.view.HomeActivity;
+import com.example.listacompras.view.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,7 +37,7 @@ public class LoginPresenter implements LoginPresenterContract.presenter{
                     if (task.isSuccessful()) {
                         user = mAuth.getCurrentUser();
                         view.message("Authentication successfuly.");
-                        view.entrar();
+                        view.entrar(HomeActivity.class);
                     } else {
                         view.message("signInWithEmail:failure"+ task.getException());
                     }
@@ -53,7 +55,7 @@ public class LoginPresenter implements LoginPresenterContract.presenter{
                        if (task.isSuccessful()) {
                            user = mAuth.getCurrentUser();
                            view.message("Cadastro realizado com sucesso");
-                           view.entrar();
+                           view.entrar(LoginActivity.class);
                        } else {
                            view.message("falha no cadastro, " + task.getException().getMessage());
 

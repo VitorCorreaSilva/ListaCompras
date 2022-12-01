@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements LoginPresente
     }
 
     @Override
-    public void entrar() {
-        startActivity(new Intent(this, LoginActivity.class));
+    public void entrar(Class mClass) {
+        startActivity(new Intent(this, mClass));
     }
 }

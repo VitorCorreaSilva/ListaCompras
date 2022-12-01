@@ -44,6 +44,13 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
                         binding.edtPassword.getText().toString());
             }
         });
+        
+        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                entrar(RegisterActivity.class);
+            }
+        });
     }
 
     @Override
@@ -57,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
     }
 
     @Override
-    public void entrar() {
-        startActivity(new Intent(this, com.example.listacompras.view.HomeActivity.class));
+    public void entrar(Class mClass) {
+        startActivity(new Intent(this, mClass));
     }
 }
