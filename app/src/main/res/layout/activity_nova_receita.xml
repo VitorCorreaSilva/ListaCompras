@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.NovaReceitaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/nova_receita_imagem"
+            android:src="@drawable/ic_launcher_foreground"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_marginTop="20dp"
+            android:hint="Nome da Receita"
+            android:id="@+id/nova_receita_nome"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_marginTop="10dp"
+            android:hint="Descrição da Receita"
+            android:id="@+id/nova_receita_descricao"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_marginTop="10dp"
+            android:hint="Tempo de Preparo"
+            android:id="@+id/nova_receita_tempo"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_marginTop="10dp"
+            android:hint="Rendimento em porções"
+            android:id="@+id/nova_receita_rendimento"/>
+
+        <Button
+            android:id="@+id/nova_receita_selecione"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Selecione a Imagem"
+            android:textSize="22dp"
+            android:textColor="#ffffff"/>
+
+        <Button
+            android:id="@+id/nova_receita_upload"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Adicionar Receita"
+            android:textSize="22dp"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+</ScrollView>

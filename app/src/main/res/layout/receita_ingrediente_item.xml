@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/ingrediente_quantidade"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="20000"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ingrediente_unidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:gravity="left"
+        android:text="colheres"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_marginLeft="4dp"
+        android:layout_width="16dp"
+        android:layout_height="wrap_content"
+        android:text="de"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_marginLeft="4dp"
+        android:id="@+id/ingrediente_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:text="Açucar"/>
+
+</LinearLayout>
