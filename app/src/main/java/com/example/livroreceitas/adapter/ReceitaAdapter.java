@@ -45,8 +45,9 @@ public class ReceitaAdapter extends RecyclerView.Adapter<ReceitaViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ReceitaViewHolder holder, int position) {
         Glide.with(context)
-                .load(receitaList.get(position).getImagem())
-                        .into(holder.imageView);
+               .load(receitaList.get(position).getImagem())
+                      .into(holder.imageView);
+
         holder.mNome.setText(receitaList.get(position).getNome());
         holder.mDescricao.setText(receitaList.get(position).getDescricao());
         holder.mTempo.setText(receitaList.get(position).getTempo());
@@ -58,6 +59,7 @@ public class ReceitaAdapter extends RecyclerView.Adapter<ReceitaViewHolder> {
                 Intent intent = new Intent(context, ReceitaActivity.class);
                 intent.putExtra("Imagem", receitaList.get(holder.getAdapterPosition()).getImagem());
                 intent.putExtra("Descricao", receitaList.get(holder.getAdapterPosition()).getDescricao());
+                intent.putExtra("Key", receitaList.get(holder.getAdapterPosition()).getKey());
                 //intent.putParcelableArrayListExtra("Ingredientes", receitaList.get(holder.getAdapterPosition()).getIngredientes());
                 //intent.putExtra("Processo", (Parcelable) receitaList.get(holder.getAdapterPosition()).getPassos());
                 context.startActivity(intent);

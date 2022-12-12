@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     EditText buscar;
     ReceitaAdapter receitaAdapter;
     ProgressDialog progressDialog;
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_receita);
         buttonAdicionar = findViewById(R.id.btn_add_receita);
         buscar = findViewById(R.id.txt_buscar);
+        gson = new Gson();
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -75,12 +78,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                receita = new ReceitaModel(document.getData().get("nome").toString(),
-                                        document.getData().get("nome").toString(),
-                                        document.getData().get("nome").toString(),
-                                        document.getData().get("nome").toString(),
-                                        document.getData().get("nome").toString()
-                                );
+                                String json = gson.toJson(document.getData());
+                                receita = gson.fromJson(json, ReceitaModel.class);
+                                receita.setKey(document.getId());
                                 receitaList.add(receita);
                             }
                             receitaAdapter.notifyDataSetChanged();

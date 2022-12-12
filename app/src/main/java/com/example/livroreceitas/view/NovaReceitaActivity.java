@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.livroreceitas.R;
+import com.example.livroreceitas.model.IngredienteModel;
+import com.example.livroreceitas.model.ProcessoModel;
 import com.example.livroreceitas.model.ReceitaModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,7 +32,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class NovaReceitaActivity extends AppCompatActivity {
 
@@ -82,11 +86,14 @@ public class NovaReceitaActivity extends AppCompatActivity {
     }
 
     public void adicionarReceita() {
-        //uploadImagem();
-        uploadReceita();
+        uploadImagem();
     }
 
     public void uploadImagem(){
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Criando receita....");
+        progressDialog.show();
+
         StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                 .child("ImagemReceita").child(uri.getLastPathSegment());
 
@@ -97,21 +104,39 @@ public class NovaReceitaActivity extends AppCompatActivity {
                 while(!uriTask.isComplete());
                 Uri urlImagem = uriTask.getResult();
                 imagemUrl = urlImagem.toString();
+                uploadReceita();
+                progressDialog.dismiss();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
             }
         });
     }
 
     public void uploadReceita(){
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Criando receita....");
-        progressDialog.show();
+        List<IngredienteModel> ingredientes = new ArrayList<>();
+        ingredientes.add(new IngredienteModel("ovo", "unidade", "3"));
+        ingredientes.add(new IngredienteModel("nescau", "xicara", "2"));
+        ingredientes.add(new IngredienteModel("farinha de trigo", "xicara", "2"));
+        ingredientes.add(new IngredienteModel("oleo", "colheres", "4"));
+        ingredientes.add(new IngredienteModel("açucar", "xicara", "1"));
+
+        List<ProcessoModel> processos = new ArrayList<>();
+        processos.add(new ProcessoModel("1", "is simply dummy text of the printing"));
+        processos.add(new ProcessoModel("2", "Various versions have evolved"));
+        processos.add(new ProcessoModel("3", "look like readable English"));
+        processos.add(new ProcessoModel("4", "Aldus PageMaker including versions of Lorem Ipsum"));
+        processos.add(new ProcessoModel("5", "as opposed to using 'Content here, content here',"));
+        processos.add(new ProcessoModel("6", "using Lorem Ipsum is that it has a more-or-less normal"));
 
         ReceitaModel receita = new ReceitaModel(
                 nome.getText().toString(),
                 descricao.getText().toString(),
                 tempo.getText().toString(),
                 rendimento.getText().toString(),
-                imagemUrl
+                imagemUrl, ingredientes, processos
         );
 
         String currentDate = DateFormat.getDateTimeInstance()
@@ -122,7 +147,6 @@ public class NovaReceitaActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(NovaReceitaActivity.this, "Receita criada com sucesso.", Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
                         finish();
                     }
                 })
@@ -130,7 +154,6 @@ public class NovaReceitaActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(NovaReceitaActivity.this, "Erro ao criar receita.", Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
                     }
                 });
     }

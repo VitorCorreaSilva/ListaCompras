@@ -3,9 +3,9 @@ package com.example.livroreceitas.model;
 public class IngredienteModel {
     private String nome;
     private String unidadeMedida;
-    private double quantidade;
+    private String quantidade;
 
-    public IngredienteModel(String nome, String unidadeMedida, double quantidade) {
+    public IngredienteModel(String nome, String unidadeMedida, String quantidade) {
         this.nome = nome;
         this.unidadeMedida = unidadeMedida;
         this.quantidade = quantidade;
@@ -27,11 +27,11 @@ public class IngredienteModel {
         this.unidadeMedida = unidadeMedida;
     }
 
-    public double getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(double quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 }

@@ -52,6 +52,8 @@
             android:hint="Rendimento em porções"
             android:id="@+id/nova_receita_rendimento"/>
 
+        
+
         <Button
             android:id="@+id/nova_receita_selecione"
             android:layout_width="match_parent"

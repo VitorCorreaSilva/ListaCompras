@@ -1,19 +1,19 @@
 package com.example.livroreceitas.model;
 
 public class ProcessoModel {
-    private int etapa;
+    private String etapa;
     private String descricao;
 
-    public ProcessoModel(int etapa, String descricao) {
+    public ProcessoModel(String etapa, String descricao) {
         this.etapa = etapa;
         this.descricao = descricao;
     }
 
-    public int getEtapa() {
+    public String getEtapa() {
         return etapa;
     }
 
-    public void setEtapa(int etapa) {
+    public void setEtapa(String etapa) {
         this.etapa = etapa;
     }
 
